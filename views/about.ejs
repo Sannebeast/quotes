@@ -1,14 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Quotes</title>
-    <link rel="stylesheet" href="./css/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us - Quotes</title>
+  <link rel="stylesheet" href="./css/style.css" />
 </head>
-<body style="background-color: #f4ecbc;">
+<body class="bg-[#f4ecbc] text-gray-800">
+  <!-- Navbar -->
   <%- include('components/navbar') %>
-    <h1>Hi</h1>
+
+  <!-- About Section -->
+  <main class="max-w-4xl mx-auto px-6 py-12">
+    <h1 class="text-4xl font-extrabold mb-6 text-center">About Us</h1>
+
+    <section class="mb-10">
+      <p class="text-lg leading-relaxed mb-4">
+        <strong>Quotes</strong> was born from a simple idea: words matter. A single sentence can inspire action, stir emotion, or provide clarity during life’s chaotic moments. Our platform is a celebration of timeless wisdom, captured in short, powerful phrases.
+      </p>
+      <p class="text-lg leading-relaxed mb-4">
+        Whether you're seeking motivation to start your day, wisdom to guide your thoughts, or a spark of creativity, our goal is to deliver quotes that resonate. From ancient philosophy to modern voices, we curate and share words that lift spirits and expand minds.
+      </p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-3">Who We Are</h2>
+      <p class="text-lg leading-relaxed mb-4">
+        We’re a small group of developers, designers, and literature enthusiasts who believe in the quiet power of great writing. We built this site with a focus on simplicity, readability, and inspiration. Our design is clean, our navigation minimal, and our mission clear.
+      </p>
+      <p class="text-lg leading-relaxed">
+        Every quote is handpicked to ensure it’s not just words — but something that adds meaning to your day.
+      </p>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-3">Why Quotes?</h2>
+      <ul class="list-disc list-inside text-lg leading-relaxed space-y-2">
+        <li>✨ They’re quick to read, yet deep in impact</li>
+        <li>📚 They connect us to history, culture, and humanity</li>
+        <li>🧠 They encourage reflection and growth</li>
+        <li>💬 They’re easy to share and remember</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-semibold mb-3">Join Us</h2>
+      <p class="text-lg leading-relaxed">
+        We love hearing from our visitors. Got a favorite quote? Want to suggest a feature? Or just want to say hi? 
+        <a href="/contact" class="underline font-medium focus:outline-none focus:ring-2 focus:ring-black">Reach out to us</a> anytime.
+      </p>
+    </section>
+
+    <div class="mt-12 text-center text-base font-medium">
+      <p>Keep reading. Keep growing. 💬</p>
+    </div>
+  </main>
+
+  <!-- Footer -->
   <%- include('components/footer') %>
 </body>
 </html>
