@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quote by <%= quote.a || 'Unknown author' %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    .quote-card {
+      position: relative;
+      background-color: #fef9d7; /* close to bg-yellow-100 */
+      padding: 3rem 2rem 3rem 2rem;
+      border-radius: 0.75rem; /* rounded-lg */
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 220px;
+      color: #333;
+    }
+    .quote-card blockquote {
+      font-style: italic;
+      font-size: 1.75rem;
+      line-height: 1.4;
+      position: relative;
+      z-index: 2;
+    }
+    .quote-card footer {
+      text-align: right;
+      font-weight: 600;
+      font-size: 1.125rem;
+      color: #4b5563; /* Tailwind's gray-700 */
+      position: relative;
+      z-index: 2;
+      margin-top: 1.5rem;
+    }
+    /* Double quotes styling */
+    .quote-mark {
+      position: absolute;
+      font-family: serif;
+      font-size: 6rem;
+      color: #facc15; /* Tailwind yellow-400 */
+      opacity: 0.25;
+      font-weight: bold;
+      user-select: none;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .quote-mark.top-left {
+      top: -1rem;
+      left: -1rem;
+    }
+    .quote-mark.bottom-right {
+      bottom: -1.5rem;
+      right: -1rem;
+      transform: rotate(180deg);
+    }
+  </style>
+</head>
+<body class="bg-[#f4ecbc] min-h-screen flex flex-col">
+  <nav>
+    <%- include('components/navbar') %>
+  </nav>
+
+  <main class="flex-grow px-4 py-12 max-w-4xl mx-auto text-center">
+    <section class="quote-card" aria-label="Quote card">
+      <span class="quote-mark top-left">“</span>
+      <blockquote>
+        <%= quote.q || 'No quote available' %>
+      </blockquote>
+      <footer>
+        — <%= quote.a || 'Unknown author' %>
+      </footer>
+      <span class="quote-mark bottom-right">“</span>
+    </section>
+
+    <section class="mt-10">
+      <a href="/" class="inline-block px-6 py-2 bg-yellow-300 hover:bg-yellow-400 text-gray-900 rounded-lg font-semibold transition duration-200">
+        ← Back to all quotes
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <%- include('components/footer') %>
+  </footer>
+</body>
+</html>

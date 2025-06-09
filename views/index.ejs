@@ -13,17 +13,18 @@
   <!-- Main content area -->
 <main role="main" class="px-4 py-8 max-w-screen-xl mx-auto">
   <section aria-label="Quotes list" class="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-6">
-    <% quotes.forEach((quote) => { %>
-      <article aria-label="Quote card" class="bg-yellow-100 p-6 rounded-lg shadow-md w-full max-w-full sm:w-[45%] flex flex-col justify-between transition-transform hover:scale-105 duration-200"
-      >
-        <blockquote class="italic text-lg sm:text-base text-left">
-          "<%= quote.q || 'No quote available' %>"
-        </blockquote>
-        <footer class="text-base sm:text-sm font-medium text-right mt-4">
-          — <%= quote.a || 'Unknown author' %>
-        </footer>
-      </article>
-    <% }) %>
+    <% quotes.forEach((quote, index) => { %>
+  <a href="/quotes/<%= index %>" class="w-full sm:w-[45%] no-underline text-inherit">
+    <article aria-label="Quote card" class="bg-yellow-100 p-6 rounded-lg shadow-md flex flex-col justify-between transition-transform hover:scale-105 duration-200">
+      <blockquote class="italic text-lg sm:text-base text-left">
+        "<%= quote.q || 'No quote available' %>"
+      </blockquote>
+      <footer class="text-base sm:text-sm font-medium text-right mt-4">
+        — <%= quote.a || 'Unknown author' %>
+      </footer>
+    </article>
+  </a>
+<% }) %>
   </section>
 </main>
 

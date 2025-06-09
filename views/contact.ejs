@@ -8,83 +8,86 @@
 </head>
 <body class="bg-[#f4ecbc] text-gray-800">
   <!-- Navbar -->
-  <%- include('components/navbar') %>
+  <nav>
+    <%- include('components/navbar') %>
+  </nav>
 
   <!-- Contact Section -->
   <main class="max-w-4xl mx-auto px-6 py-12">
     <h1 class="text-3xl font-bold text-center mb-6">Get in Touch</h1>
-    <p class="text-center mb-10 text-lg">We’d love to hear from you. Whether it’s feedback, a partnership idea, or just to say hello — drop us a message below.</p>
+    <p class="text-center mb-10 text-lg">
+      We’d love to hear from you. Whether it’s feedback, a partnership idea, or just to say hello — drop us a message below.
+    </p>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-10">
       <!-- Contact Form -->
-      <form class="bg-white p-6 rounded-lg shadow-md space-y-4" method="POST">
-        <div>
+      <form class="bg-white p-6 rounded-lg shadow-md space-y-4" method="POST" aria-label="Contact form">
+        <fieldset>
           <label for="name" class="block font-semibold mb-1">Your Name</label>
           <input type="text" id="name" name="name" required class="w-full p-3 border rounded-md focus:ring-2 focus:ring-black" />
-        </div>
-        <div>
+        </fieldset>
+        <fieldset>
           <label for="email" class="block font-semibold mb-1">Your Email</label>
           <input type="email" id="email" name="email" required class="w-full p-3 border rounded-md focus:ring-2 focus:ring-black" />
-        </div>
-        <div>
+        </fieldset>
+        <fieldset>
           <label for="message" class="block font-semibold mb-1">Message</label>
           <textarea id="message" name="message" rows="5" required class="w-full p-3 border rounded-md focus:ring-2 focus:ring-black"></textarea>
-        </div>
-        <button type="submit" class="bg-black text-white px-6 py-2 rounded hover:bg-gray-800 transition-colors">Send Message</button>
+        </fieldset>
+        <button type="submit" class="bg-black text-white px-6 py-2 rounded hover:bg-gray-800 transition-colors">
+          Send Message
+        </button>
       </form>
 
       <!-- Contact Info -->
-      <div class="bg-yellow-100 p-6 rounded-lg shadow-md">
+      <section class="bg-yellow-100 p-6 rounded-lg shadow-md" aria-label="Contact information">
         <h2 class="text-xl font-semibold mb-4">Our Contact Info</h2>
-        <p class="mb-2"><strong>Quotes HQ</strong></p>
-        <p class="mb-2">123 Thought Lane<br />Imaginaria, IM 45678</p>
-        <p class="mb-2">Email: 
-          <a href="mailto:support@quoteapp.com" class="underline focus:outline-none focus:ring-2 focus:ring-black">
-            support@quoteapp.com
-          </a>
-        </p>
-        <p class="mb-2">Phone: 
-          <a href="tel:+1234567890" class="underline focus:outline-none focus:ring-2 focus:ring-black">
-            +1 (234) 567-890
-          </a>
-        </p>
-        <p class="mt-4">Business Hours:</p>
+        <address class="not-italic mb-4">
+          <p class="mb-2"><strong>Quotes HQ</strong></p>
+          <p class="mb-2">123 Thought Lane<br />Imaginaria, IM 45678</p>
+          <p class="mb-2">
+            Email: <a href="mailto:support@quoteapp.com" class="underline focus:outline-none focus:ring-2 focus:ring-black">support@quoteapp.com</a>
+          </p>
+          <p class="mb-2">
+            Phone: <a href="tel:+1234567890" class="underline focus:outline-none focus:ring-2 focus:ring-black">+1 (234) 567-890</a>
+          </p>
+        </address>
+        <p class="mb-2 font-semibold">Business Hours:</p>
         <ul class="list-disc list-inside">
           <li>Mon–Fri: 9am – 6pm</li>
           <li>Sat: 10am – 4pm</li>
           <li>Sun: Closed</li>
         </ul>
-      </div>
-    </div>
+      </section>
+    </section>
   </main>
 
   <!-- Footer -->
-  <%- include('components/footer') %>
+  <footer>
+    <%- include('components/footer') %>
+  </footer>
+
   <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const form = document.querySelector('form');
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.querySelector('form');
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault(); // Stop actual submission
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
 
-      // Create alert box
-      const alert = document.createElement('div');
-      alert.textContent = 'Thank you for your message!';
-      alert.className = 'fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-md shadow-lg z-50 animate-fadeIn';
+        const alert = document.createElement('div');
+        alert.textContent = 'Thank you for your message!';
+        alert.className = 'fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-md shadow-lg z-50 animate-fadeIn';
 
-      // Append alert to body
-      document.body.appendChild(alert);
+        document.body.appendChild(alert);
 
-      // Remove after 4 seconds
-      setTimeout(() => {
-        alert.classList.add('animate-fadeOut');
-        alert.addEventListener('animationend', () => alert.remove());
-      }, 4000);
+        setTimeout(() => {
+          alert.classList.add('animate-fadeOut');
+          alert.addEventListener('animationend', () => alert.remove());
+        }, 4000);
 
-      // Reset form
-      form.reset();
+        form.reset();
+      });
     });
-  });
-</script>
+  </script>
 </body>
 </html>

@@ -21,3 +21,19 @@ export const getIndex = async (req: Request, res: Response): Promise<void> => {
     res.status(500).send('Failed to fetch quotes');
   }
 };
+
+export const getQuoteById = (req: Request, res: Response): void => {
+  const id: number = parseInt(req.params.id, 10);
+
+  if (!firstQuotes) {
+    return res.status(404).render('404');
+  }
+
+  const quote: Quote | undefined = firstQuotes[id];
+
+  if (!quote || isNaN(id) || id < 0 || id >= firstQuotes.length) {
+    return res.status(404).render('404');
+  }
+
+  res.render('show', { quote, id });
+};
