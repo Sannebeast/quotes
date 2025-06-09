@@ -4,15 +4,45 @@ Dotenv.config({ path: '.env' });
 import { getData } from '../utils/ajax.js';
 import { Quote } from '../utils/interfaces.js';
 
-let firstQuotes: Quote[] | null = null;
+let randomQuotes: Quote[] | null = null;
+let todayQuote: Quote | null = null;
 
 export const getIndex = async (req: Request, res: Response): Promise<void> => {
   try {
-    if (!firstQuotes) {
-      firstQuotes = await getData<Quote[]>('https://zenquotes.io/api/quotes');
+    let quotesPromise: Promise<Quote[]>;
+    let todayQuotePromise: Promise<Quote[]>;
+
+    if (randomQuotes) {
+      quotesPromise = Promise.resolve(randomQuotes);
+    } else {
+      quotesPromise = getData<Quote[]>('https://zenquotes.io/api/quotes');
     }
-    res.render('index', { quotes: firstQuotes });
-  } catch {
+
+    if (todayQuote) {
+      todayQuotePromise = Promise.resolve([todayQuote]);
+    } else {
+      todayQuotePromise = getData<Quote[]>('https://zenquotes.io/api/today');
+    }
+
+    const [quotesResult, todayResult] = await Promise.all([
+      quotesPromise,
+      todayQuotePromise,
+    ]);
+
+    if (!randomQuotes) {
+      randomQuotes = quotesResult;
+    }
+
+    if (!todayQuote && todayResult[0]) {
+      todayQuote = todayResult[0];
+    }
+
+    res.render('index', {
+      quotes: randomQuotes,
+      todayQuote: todayQuote,
+    });
+  } catch (error) {
+    console.error('Error fetching quotes:', error);
     res.status(500).send('Failed to fetch quotes');
   }
 };
@@ -20,13 +50,13 @@ export const getIndex = async (req: Request, res: Response): Promise<void> => {
 export const getQuoteById = (req: Request, res: Response): void => {
   const id: number = parseInt(req.params.id, 10);
 
-  if (!firstQuotes) {
+  if (!randomQuotes) {
     return res.status(404).render('404');
   }
 
-  const quote: Quote | undefined = firstQuotes[id];
+  const quote: Quote | undefined = randomQuotes[id];
 
-  if (!quote || isNaN(id) || id < 0 || id >= firstQuotes.length) {
+  if (!quote || isNaN(id) || id < 0 || id >= randomQuotes.length) {
     return res.status(404).render('404');
   }
 
