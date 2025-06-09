@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Quotes</title>
   <link rel="stylesheet" href="./css/style.css" />
 </head>
@@ -13,14 +14,12 @@
 <main role="main" class="px-4 py-8 max-w-screen-xl mx-auto">
   <section aria-label="Quotes list" class="flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-6">
     <% quotes.forEach((quote) => { %>
-      <article 
-        aria-label="Quote card"
-        class="bg-yellow-100 p-6 rounded-lg shadow-md w-full sm:w-[45%] flex flex-col justify-between h-48 transition-transform hover:scale-105 duration-200"
+      <article aria-label="Quote card" class="bg-yellow-100 p-6 rounded-lg shadow-md w-full max-w-full sm:w-[45%] flex flex-col justify-between transition-transform hover:scale-105 duration-200"
       >
-        <blockquote class="italic text-base text-left">
+        <blockquote class="italic text-lg sm:text-base text-left">
           "<%= quote.q || 'No quote available' %>"
         </blockquote>
-        <footer class="text-sm font-medium text-right mt-4">
+        <footer class="text-base sm:text-sm font-medium text-right mt-4">
           — <%= quote.a || 'Unknown author' %>
         </footer>
       </article>
