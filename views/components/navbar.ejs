@@ -1,8 +1,20 @@
 <nav class="bg-white shadow-md p-4 flex justify-between items-center" style="background-color: #f4ecbc;" role="navigation" aria-label="Main navigation">
   <a href="/" class="text-xl font-bold text-black focus:outline-none focus:ring-2 focus:ring-black" style="color: #000000;">Quotes</a>
-  <ul class="flex space-x-4 font-semibold text-black" role="list">
+
+  <!-- Hamburger button (shown on small screens) -->
+  <button id="menu-btn" aria-label="Toggle menu" aria-expanded="false" class="sm:hidden focus:outline-none focus:ring-2 focus:ring-black">
+    <!-- Hamburger icon: 3 bars -->
+    <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" >
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <line x1="3" y1="12" x2="21" y2="12" />
+      <line x1="3" y1="18" x2="21" y2="18" />
+    </svg>
+  </button>
+
+  <!-- Navigation menu -->
+  <ul id="menu" class="hidden sm:flex space-x-4 font-semibold text-black" role="list">
     <li>
-      <a href="/" class="hover:underline focus:outline-none focus:ring-2 focus:ring-black ">Home</a>
+      <a href="/" class="hover:underline focus:outline-none focus:ring-2 focus:ring-black">Home</a>
     </li>
     <li>
       <a href="/about" class="hover:underline focus:outline-none focus:ring-2 focus:ring-black">About</a>
@@ -11,4 +23,62 @@
       <a href="/contact" class="hover:underline focus:outline-none focus:ring-2 focus:ring-black">Contact</a>
     </li>
   </ul>
+
+  <style>
+    /* Slide down animation for mobile menu */
+    #menu.show {
+      display: block;
+      animation: slideDown 0.3s ease forwards;
+    }
+
+    #menu.hide {
+      animation: slideUp 0.3s ease forwards;
+    }
+
+    @keyframes slideDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideUp {
+      0% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+    }
+  </style>
 </nav>
+
+<script>
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('menu');
+
+  btn.addEventListener('click', () => {
+    if (menu.classList.contains('show')) {
+      // Hide menu with slide up
+      menu.classList.remove('show');
+      menu.classList.add('hide');
+      btn.setAttribute('aria-expanded', 'false');
+      // Wait for animation to finish before hiding completely
+      menu.addEventListener('animationend', () => {
+        menu.classList.remove('hide');
+        menu.style.display = 'none';
+      }, { once: true });
+    } else {
+      // Show menu with slide down
+      menu.style.display = 'block';
+      menu.classList.add('show');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+</script>
