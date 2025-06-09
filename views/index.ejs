@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Quotes</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+    <div class="flex flex-col items-center justify-center min-h-screen gap-8">
+      <% facts.forEach((fact) => { %>
+        <article class="bg-white p-8 rounded shadow-md max-w-lg w-full">
+          <h1 class="text-2xl font-bold mb-4 text-center">Quote</h1>
+          <ul class="text-center text-gray-700">
+            <li><%= fact.q || 'No quote available' %></li>
+            <li><%= fact.a || 'Unknown author' %></li>
+          </ul>
+        </article>
+      <% }) %>
+    </div>
+</body>
+</html>
