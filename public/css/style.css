@@ -538,6 +538,7 @@
       line-height: var(--tw-leading, var(--text-sm--line-height));
     }
   }
+<<<<<<< HEAD
 }
 @property --tw-rotate-x {
   syntax: "*";
@@ -558,6 +559,8 @@
 @property --tw-skew-y {
   syntax: "*";
   inherits: false;
+=======
+>>>>>>> 1173aa437aa23fd2a7d8e9c49d0c82b8f2dc1afa
 }
 @property --tw-space-y-reverse {
   syntax: "*";
