@@ -375,6 +375,9 @@
   .bg-\[\#f4ecbc\] {
     background-color: #f4ecbc;
   }
+  .bg-\[\#fffbe4\] {
+    background-color: #fffbe4;
+  }
   .bg-black {
     background-color: var(--color-black);
   }
@@ -389,9 +392,6 @@
   }
   .bg-yellow-100 {
     background-color: var(--color-yellow-100);
-  }
-  .bg-yellow-200 {
-    background-color: var(--color-yellow-200);
   }
   .bg-yellow-300 {
     background-color: var(--color-yellow-300);
